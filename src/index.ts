@@ -11,12 +11,19 @@ import distibutedRouter from "./routes/distibutedLocking.route";
 import rateLimiter from "./middleware/rateLimiter";
 import "./workers/email.worker";
 import emailRouter from "./routes/email.route";
+import authRouter from "./routes/auth.route";
+import profileRouter from "./routes/profile.route";
+import "./subscribers/chat.subscriber";
+import chatRouter from "./routes/chat.route";
 
 //Routes Configuration
 app.use(rateLimiter);
 app.use("/api/catching", catchingRouter);
 app.use("/distibuted", distibutedRouter);
 app.use("/bulMq/email", emailRouter);
+app.use("/auth", authRouter);
+app.use("/user", profileRouter);
+app.use("/chat", chatRouter);
 
 // Mongo DB Connection
 mongoose
